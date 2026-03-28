@@ -1,0 +1,185 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "annotationId",  "type": "string"  },
+      { "indexed": true,  "name": "doctorAddress", "type": "address" },
+      { "indexed": false, "name": "dataHash",      "type": "bytes32" },
+      { "indexed": false, "name": "ipfsHash",      "type": "string"  },
+      { "indexed": false, "name": "timestamp",     "type": "uint256" }
+    ],
+    "name": "AnnotationStored",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "annotationId",  "type": "string"  },
+      { "indexed": true,  "name": "doctorAddress", "type": "address" },
+      { "indexed": false, "name": "timestamp",     "type": "uint256" }
+    ],
+    "name": "AnnotationApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "annotationId",  "type": "string"  },
+      { "indexed": true,  "name": "doctorAddress", "type": "address" },
+      { "indexed": false, "name": "timestamp",     "type": "uint256" }
+    ],
+    "name": "AnnotationRejected",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "annotationId",  "type": "string"  },
+      { "indexed": true,  "name": "doctorAddress", "type": "address" },
+      { "indexed": false, "name": "amount",        "type": "uint256" }
+    ],
+    "name": "PaymentDeposited",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "annotationId",  "type": "string"  },
+      { "indexed": true,  "name": "doctorAddress", "type": "address" },
+      { "indexed": false, "name": "amount",        "type": "uint256" }
+    ],
+    "name": "PaymentReleased",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "name": "doctorAddress",   "type": "address" },
+      { "indexed": false, "name": "reputationScore", "type": "uint256" }
+    ],
+    "name": "ReputationUpdated",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "name": "annotationId",  "type": "string"  },
+      { "name": "doctorAddress", "type": "address" },
+      { "name": "dataHash",      "type": "bytes32" },
+      { "name": "ipfsHash",      "type": "string"  }
+    ],
+    "name": "storeAnnotation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "annotationId", "type": "string" }],
+    "name": "approveAnnotation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "annotationId", "type": "string" }],
+    "name": "rejectAnnotation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "annotationId",  "type": "string"  },
+      { "name": "doctorAddress", "type": "address" }
+    ],
+    "name": "depositPayment",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "annotationId", "type": "string" }],
+    "name": "releasePayment",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "annotationId", "type": "string" }],
+    "name": "getAnnotation",
+    "outputs": [
+      {
+        "components": [
+          { "name": "annotationId",  "type": "string"  },
+          { "name": "doctorAddress", "type": "address" },
+          { "name": "dataHash",      "type": "bytes32" },
+          { "name": "ipfsHash",      "type": "string"  },
+          { "name": "timestamp",     "type": "uint256" },
+          { "name": "approved",      "type": "bool"    },
+          { "name": "exists",        "type": "bool"    }
+        ],
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "doctorAddress", "type": "address" }],
+    "name": "getReputation",
+    "outputs": [
+      {
+        "components": [
+          { "name": "totalAnnotations", "type": "uint256" },
+          { "name": "approvedCount",    "type": "uint256" },
+          { "name": "rejectedCount",    "type": "uint256" },
+          { "name": "reputationScore",  "type": "uint256" },
+          { "name": "exists",           "type": "bool"    }
+        ],
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "annotationId", "type": "string" }],
+    "name": "getPayment",
+    "outputs": [
+      {
+        "components": [
+          { "name": "annotationId",  "type": "string"  },
+          { "name": "doctorAddress", "type": "address" },
+          { "name": "amount",        "type": "uint256" },
+          { "name": "released",      "type": "bool"    },
+          { "name": "exists",        "type": "bool"    }
+        ],
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "annotationId", "type": "string"  },
+      { "name": "dataHash",     "type": "bytes32" }
+    ],
+    "name": "verifyAnnotation",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  { "stateMutability": "payable", "type": "receive" }
+]

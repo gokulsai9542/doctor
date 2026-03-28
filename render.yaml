@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: medannotate-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false          # fill in Render dashboard
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # paste your Vercel URL here after deploying frontend
+      - key: AI_VALIDATION_ENABLED
+        value: "false"
+      - key: FLASK_ML_URL
+        value: "http://localhost:5001"

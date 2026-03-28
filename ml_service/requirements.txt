@@ -1,0 +1,10 @@
+flask==3.0.0
+tensorflow==2.15.0
+Pillow==10.2.0
+numpy==1.26.4
+opencv-python-headless==4.9.0.80
+requests==2.31.0
+kaggle==1.6.6
+scikit-learn==1.4.0
+matplotlib==3.8.2
+gunicorn==21.2.0
