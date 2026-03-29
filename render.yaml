@@ -9,7 +9,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        sync: false          # fill in Render dashboard
+        sync: false
       - key: JWT_SECRET
         sync: false
       - key: CLOUDINARY_CLOUD_NAME
@@ -19,8 +19,6 @@ services:
       - key: CLOUDINARY_API_SECRET
         sync: false
       - key: FRONTEND_URL
-        sync: false          # paste your Vercel URL here after deploying frontend
+        sync: false
       - key: AI_VALIDATION_ENABLED
         value: "false"
-      - key: FLASK_ML_URL
-        value: "http://localhost:5001"
